@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -55,5 +56,18 @@ public class TodosController {
             return new ResponseEntity<>(e, HttpStatus.BAD_GATEWAY);
         }
     }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = "application/json", value = "id_todos")
+    public ResponseEntity<?> updateStatus (@RequestBody TodosSaveDto todo, @PathParam("id_todos") Integer id_todos){
+        try {
+            TodosSaveDto myTodos = todoService.saveTodo(todo);
+            ResponseSuccess response = new ResponseSuccess("Berhasil Mendapatkan Todos", 200, myTodos);
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_GATEWAY);
+        }
+    }
+
+
 
 }

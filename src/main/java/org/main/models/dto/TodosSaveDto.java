@@ -1,17 +1,27 @@
 package org.main.models.dto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class TodosSaveDto {
     private int id;
     private String title;
     private String description;
-    private Date createdAt;
-    private Date endAt;
+    private String createdAt;
+    private String endAt;
     private boolean completed;
     private int id_user;
+    private int id_type;
 
-    public TodosSaveDto(int id, String title, String description, Date createdAt, Date endAt, boolean completed, int id_user) {
+    public int getId_type() {
+        return id_type;
+    }
+
+    public void setId_type(int id_type) {
+        this.id_type = id_type;
+    }
+
+    public TodosSaveDto(int id, String title, String description, String createdAt, String endAt, boolean completed, int id_user, int id_type) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -19,6 +29,7 @@ public class TodosSaveDto {
         this.endAt = endAt;
         this.completed = completed;
         this.id_user = id_user;
+        this.id_type = id_type;
     }
 
     public int getId() {
@@ -45,19 +56,19 @@ public class TodosSaveDto {
         this.description = description;
     }
 
-    public Date getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getEndAt() {
+    public String getEndAt() {
         return endAt;
     }
 
-    public void setEndAt(Date endAt) {
+    public void setEndAt(String endAt) {
         this.endAt = endAt;
     }
 

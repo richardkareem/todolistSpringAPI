@@ -1,24 +1,27 @@
 package org.main.models.dto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class TodosDto {
     private int id;
     private String title;
     private String description;
-    private Date createdAt;
-    private Date endAt;
+    private String created_at;
+    private String end_at;
     private boolean completed;
     private String username;
+    private String type_todo;
 
-    public TodosDto(int id, String title, String description, Date createdAt, Date endAt, boolean completed, String username) {
+    public TodosDto(int id, String title, String description, String created_at, String end_at, boolean completed, String username, String type_todo) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.createdAt = createdAt;
-        this.endAt = endAt;
+        this.created_at = created_at;
+        this.end_at = end_at;
         this.completed = completed;
         this.username = username;
+        this.type_todo = type_todo;
     }
 
     public int getId() {
@@ -45,20 +48,20 @@ public class TodosDto {
         this.description = description;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
-    public Date getEndAt() {
-        return endAt;
+    public String getEnd_at() {
+        return end_at;
     }
 
-    public void setEndAt(Date endAt) {
-        this.endAt = endAt;
+    public void setEnd_at(String end_at) {
+        this.end_at = end_at;
     }
 
     public boolean isCompleted() {
@@ -75,5 +78,13 @@ public class TodosDto {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getType_todo() {
+        return type_todo;
+    }
+
+    public void setType_todo(String type_todo) {
+        this.type_todo = type_todo;
     }
 }

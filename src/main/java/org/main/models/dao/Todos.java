@@ -1,6 +1,7 @@
 package org.main.models.dao;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -11,15 +12,25 @@ public class Todos {
     private int id;
     private String title;
     private String description;
-    private Date createdAt;
-    private Date endAt;
+    private String createdAt;
+    private String endAt;
     private boolean completed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     private Users users;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_type_todo")
+    private TypeTodos typeTodos;
 
+    public TypeTodos getTypeTodos() {
+        return typeTodos;
+    }
+
+    public void setTypeTodos(TypeTodos typeTodos) {
+        this.typeTodos = typeTodos;
+    }
 
     public int getId() {
         return id;
@@ -45,19 +56,20 @@ public class Todos {
         this.description = description;
     }
 
-    public Date getCreatedAt() {
+
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getEndAt() {
+    public String getEndAt() {
         return endAt;
     }
 
-    public void setEndAt(Date endAt) {
+    public void setEndAt(String endAt) {
         this.endAt = endAt;
     }
 
