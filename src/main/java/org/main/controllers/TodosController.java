@@ -57,17 +57,27 @@ public class TodosController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.PUT, produces = "application/json", value = "id_todos")
-    public ResponseEntity<?> updateStatus (@RequestBody TodosSaveDto todo, @PathParam("id_todos") Integer id_todos){
+    @RequestMapping(method = RequestMethod.PUT, produces = "application/json", value = "/{id_todos}")
+    public ResponseEntity<?> updateStatus (@PathVariable("id_todos") Integer id_todos){
         try {
-            TodosSaveDto myTodos = todoService.saveTodo(todo);
-            ResponseSuccess response = new ResponseSuccess("Berhasil Mendapatkan Todos", 200, myTodos);
+            TodosDto myTodos = todoService.changeStatus(id_todos);
+            ResponseSuccess response = new ResponseSuccess("Berhasil mengganti Status", 200, myTodos);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e, HttpStatus.BAD_GATEWAY);
         }
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, produces = "application/json", value = "/{id_todos}")
+    public ResponseEntity<?> delete (@PathVariable("id_todos") Integer id_todos){
+        try {
+            todoService.deleteTodo(id_todos);
+            ResponseSuccess response = new ResponseSuccess("Berhasil mengganti Status", 200, "Berhasil");
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e, HttpStatus.BAD_GATEWAY);
+        }
+    }
 
 
 }

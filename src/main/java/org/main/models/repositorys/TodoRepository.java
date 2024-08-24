@@ -10,4 +10,6 @@ import java.util.List;
 public interface TodoRepository extends JpaRepository<Todos, Integer> {
 //    List<Todos> findTodoByIdUser(Integer idUser);
     public  Todos findFirstById(int id);
+    public List<Todos> findAllByisDeletedFalse();
+//    public List<Todos> findAllByIs
 }
