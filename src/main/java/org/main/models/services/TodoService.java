@@ -1,6 +1,7 @@
 package org.main.models.services;
 
 import net.bytebuddy.implementation.bytecode.Throw;
+import org.main.models.configs.JwtAuthenticationEntryPoint;
 import org.main.models.dao.Todos;
 import org.main.models.dao.TypeTodos;
 import org.main.models.dao.Users;
@@ -11,6 +12,8 @@ import org.main.models.repositorys.TodoRepository;
 import org.main.models.repositorys.UserRepository;
 import org.main.models.utils.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
