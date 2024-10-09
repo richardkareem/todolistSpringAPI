@@ -82,6 +82,7 @@ public class UserService {
        List<Users> user =  userRepository.findAll();
        List<UserDto> userDtos = new ArrayList<>();
         for(Users u : user){
+            System.out.println(u.getName());
             UserDto userDto = new UserDto(u.getId(), u.getName());
             userDtos.add(userDto);
         }
